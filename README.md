@@ -1,6 +1,6 @@
 # Route Optimizator MVP
 
-Implement route optimization using Mapbox, leaflet.routingMachine library, ngx-leaflet & Angular 14.
+Implement route optimization using Mapbox, leaflet.routingMachine library, ngx-leaflet & Angular 15.
 
 ## Development server
 
