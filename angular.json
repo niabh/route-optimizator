@@ -62,9 +62,7 @@
 							"aot": true,
 							"extractLicenses": true,
 							"vendorChunk": false,
-							"buildOptimizer": true,
-							"baseHref": "/",
-							"deployUrl": "https://niabh.github.io/route-optimizator"
+							"buildOptimizer": true
 						}
 					},
 					"defaultConfiguration": ""
