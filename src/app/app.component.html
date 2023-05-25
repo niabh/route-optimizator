@@ -1,0 +1,390 @@
+<div class="contents">
+	<p-scrollPanel
+		[style]="{
+			width: '29rem',
+			height: '100%'
+		}"
+	>
+		<div [style]="'margin: 1rem 2.5rem 0 2.5rem'">
+			<h3 class="p-dialog-title">Diseña y Optimiza tu ruta</h3>
+
+			<!-- DIRECCIONES-->
+			<div class="flex md:justify-content-end">
+				<p-button
+					label="Añadir dirección"
+					styleClass="p-button-text"
+					(click)="onAddNewCustomAddressButtonClicked()"
+				></p-button>
+			</div>
+			<p-scrollPanel
+				[style]="{
+					width: '100%',
+					maxHeight: '15rem',
+					margin: 0,
+					padding: 0
+				}"
+			>
+				<div
+					class="flex flex-column row-gap-3"
+					style="margin: 1rem 0 1rem 0"
+				>
+					<div class="flex flex-column row-gap-1">
+						<label htmlFor="origin-location"
+							>Dirección de origen</label
+						>
+						<input
+							pInputText
+							id="origin-location"
+							placeholder="Añadir dirección"
+							[ngModel]="getOriginLocation().company"
+							disabled
+						/>
+					</div>
+
+					<div
+						class="flex flex-column row-gap-1"
+						*ngFor="
+							let location of selectedLocations.length > 0
+								? getIntermediateLocations()
+								: ['', ''];
+							let i = index
+						"
+					>
+						<label [htmlFor]="'stop-location-' + (i + 1)"
+							>Parada {{ i + 1 }}</label
+						>
+						<input
+							pInputText
+							[id]="'stop-location-' + (i + 1)"
+							placeholder="Añadir dirección"
+							[ngModel]="location.company"
+							disabled
+						/>
+					</div>
+					<div class="flex flex-column row-gap-1">
+						<label htmlFor="destination-location"
+							>Dirección de destino</label
+						>
+						<input
+							pInputText
+							id="destination-location"
+							[ngModel]="getDestinationLocation().company"
+							placeholder="Añadir dirección"
+							disabled
+						/>
+					</div>
+				</div>
+			</p-scrollPanel>
+
+			<!-- TIPOS DE PARADA-->
+			<div style="margin-top: 2rem" *ngIf="selectedStopOptions">
+				<div
+					class="flex justify-content-between column-gap-3"
+					style="margin-top: 1rem"
+					*ngFor="let selected of selectedStopOptions; let i = index"
+				>
+					<div class="flex flex-column row-gap-1" style="width: 50%">
+						<label htmlFor="origin-location">Tipo de parada</label>
+						<p-dropdown
+							[options]="stopOptions"
+							optionLabel="name"
+							optionValue="id"
+							placeholder="Añadir tipo de parada"
+							[(ngModel)]="selectedStopOptions[i].id"
+						></p-dropdown>
+					</div>
+					<div class="flex flex-column row-gap-1">
+						<label
+							htmlFor="origin-location"
+							pTooltip="Tiempo extra que haya que tener en cuenta"
+							>Duración de parada*</label
+						>
+						<div class="p-inputgroup w-full">
+							<p-inputMask
+								mask="99:99"
+								placeholder="00:00"
+								[(ngModel)]="selectedStopOptions[i].time"
+								[style]="{
+									width: '4rem',
+									borderTopRightRadius: '0',
+									borderBottomRightRadius: '0'
+								}"
+							></p-inputMask>
+							<span
+								style="width: 0.5rem"
+								class="p-inputgroup-addon"
+								>X1</span
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="flex md:justify-content-end" style="margin-top: 1rem">
+				<p-button
+					label="+ Añadir tiempo de parada"
+					styleClass="p-button-text"
+					(click)="onAddStopOptionButtonClicked()"
+					[disabled]="
+						selectedStopOptions.length > 0 &&
+						(selectedStopOptions[selectedStopOptions.length - 1]
+							.id === 0 ||
+							selectedStopOptions[selectedStopOptions.length - 1]
+								.time === '')
+					"
+				></p-button>
+			</div>
+
+			<p-divider></p-divider>
+
+			<!-- FILTROS -->
+			<div class="flex flex-column row-gap-3">
+				<div class="flex justify-content-between column-gap-3">
+					<div
+						class="flex flex-column row-gap-1 col-6"
+						style="max-width: 46%"
+					>
+						<label htmlFor="start-time">Hora de salida</label>
+						<input
+							pInputText
+							id="start-time"
+							[(ngModel)]="startTime"
+							mask="99:99"
+							placeholder="00:00"
+						/>
+					</div>
+					<div
+						class="flex flex-column row-gap-1 col-6"
+						style="max-width: 46%"
+					>
+						<label htmlFor="end-time">Hora de llegada</label>
+						<input
+							pInputText
+							id="end-time"
+							[(ngModel)]="endTime"
+							mask="99:99"
+							placeholder="00:00"
+						/>
+					</div>
+				</div>
+				<div class="flex flex-column row-gap-1">
+					<label htmlFor="avoid-filters">Evitar</label>
+					<div class="flex justify-content-between">
+						<div class="flex align-items-center gap-1">
+							<p-checkbox
+								name="selected-filters"
+								value="highway"
+								[(ngModel)]="selectedFilters"
+								inputId="highway"
+							></p-checkbox>
+							<label for="ny">Autopista</label>
+						</div>
+
+						<div class="flex align-items-center gap-1">
+							<p-checkbox
+								name="selected-filters"
+								value="toll"
+								[(ngModel)]="selectedFilters"
+								inputId="toll"
+							></p-checkbox>
+							<label for="sf">Peajes</label>
+						</div>
+
+						<div class="flex align-items-center gap-1">
+							<p-checkbox
+								name="selected-filters"
+								value="ferries"
+								[(ngModel)]="selectedFilters"
+								inputId="ferries"
+							></p-checkbox>
+							<label for="la">Ferris</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- BOTÓN -->
+			<div
+				class="flex justify-content-center"
+				[style]="'margin-top: 3rem; margin-bottom: 2rem'"
+			>
+				<p-button
+					(click)="onCalculateRouteButtonClicked()"
+					label="Calcular y ordenar ruta"
+					[disabled]="selectedLocations.length == 0"
+				></p-button>
+			</div>
+		</div>
+	</p-scrollPanel>
+	<div style="height: 100%; width: 100%">
+		<div
+			class="column-gap-4"
+			[class.flex]="totalDuration"
+			[hidden]="!totalDuration"
+			style="width: 100%; padding: 1rem; padding-left: 0"
+		>
+			<div class="flex flex-column row-gap-1">
+				<label htmlFor="total-duration"
+					>Duración total del recorrido</label
+				>
+				<input
+					pInputText
+					id="total-duration"
+					[(ngModel)]="totalDuration"
+					disabled
+				/>
+			</div>
+			<div class="flex flex-column row-gap-1">
+				<label htmlFor="travel-duration">Tiempo en carretera</label>
+				<input
+					pInputText
+					id="travel-duration"
+					[(ngModel)]="travelDuration"
+					disabled
+				/>
+			</div>
+			<div class="flex flex-column row-gap-1">
+				<label htmlFor="dropoffs-duration">Tiempo en parada</label>
+				<input
+					pInputText
+					id="dropoffs-duration"
+					[(ngModel)]="droppoffsDurations"
+					disabled
+				/>
+			</div>
+		</div>
+		<div
+			style="height: 100%; width: 100%; overflow: hidden"
+			[style.height]="!totalDuration ? '100%' : '86%'"
+			leaflet
+			[leafletOptions]="options"
+			(leafletMapReady)="onMapReady($event)"
+		></div>
+	</div>
+</div>
+
+<!-- MODAL -->
+<p-dialog
+	header="Mi biblioteca de clientes"
+	[(visible)]="showCustomerAddressesModal"
+	[modal]="true"
+	[style]="{ width: '50vw' }"
+	[draggable]="false"
+	[resizable]="false"
+>
+	<div
+		class="flex col-12 column-gap-3"
+		style="padding-bottom: 0; padding-top: 0"
+	>
+		<div class="col-6" style="padding-bottom: 0">
+			<p-autoComplete
+				[(ngModel)]="tmpSelectedLocation"
+				(ngModelChange)="onLocationSelected()"
+				[suggestions]="suggestedLocations"
+				(completeMethod)="suggestLocations($event)"
+				placeholder="Buscar dirección"
+				showClear="true"
+				field="company"
+				[style]="{ display: 'block', width: '100%' }"
+				[inputStyle]="{ width: '100%' }"
+			></p-autoComplete>
+			<p-scrollPanel
+				[style]="{
+					height: '15rem'
+				}"
+			>
+				<div
+					style="padding: 0.5rem; padding-bottom: 0; padding-left: 0"
+				>
+					<div
+						*ngFor="let location of locations"
+						class="field-checkbox"
+						style="margin-top: 1rem"
+					>
+						<p-checkbox
+							name="tmp-locations"
+							[inputId]="location.id"
+							[value]="location"
+							[(ngModel)]="tmpSelectedLocations"
+						></p-checkbox>
+						<label [for]="location.id">{{
+							location.company
+						}}</label>
+					</div>
+				</div>
+			</p-scrollPanel>
+		</div>
+		<div class="col-6">
+			<div style="margin-top: 1rem">
+				<label>Direcciones seleccionadas:</label>
+			</div>
+			<p-scrollPanel
+				[style]="{
+					height: '10rem'
+				}"
+			>
+				<div
+					class="flex flex-column row-gap-4"
+					style="padding: 0.5rem; padding-left: 0"
+				>
+					<div style="margin-top: 1rem">
+						<div
+							*ngFor="let selected of tmpSelectedLocations"
+							class="flex justify-content-between"
+						>
+							<div class="field-checkbox">
+								<p-checkbox
+									name="tmp-locations"
+									[inputId]="selected.id"
+									[value]="selected"
+									[(ngModel)]="tmpSelectedLocations"
+								></p-checkbox>
+								<label
+									[for]="selected.id"
+									style="
+										margin-right: 0.5rem;
+										margin-left: 0.5rem;
+									"
+									>{{ selected.company }}</label
+								>
+							</div>
+							<div class="flex gap-2">
+								<label
+									class="stop-type"
+									[class.active]="selected.isOrigin"
+									(click)="
+										resetOrigin();
+										selected.isOrigin = !selected.isOrigin
+									"
+									>Salida</label
+								>
+								<label
+									class="stop-type"
+									[class.active]="selected.isDestination"
+									(click)="
+										resetDestination();
+										selected.isDestination =
+											!selected.isDestination
+									"
+									>Destino</label
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</p-scrollPanel>
+			<p-divider></p-divider>
+			<!-- BOTÓN -->
+			<div class="flex justify-content-center">
+				<p-button
+					[label]="
+						'Añadir ' + tmpSelectedLocations.length + ' destinos'
+					"
+					(click)="onAddTmpLocationsButtonClicked($event)"
+					[disabled]="tmpSelectedLocations.length === 0"
+					class="is-invalid"
+				></p-button>
+				<p-confirmPopup></p-confirmPopup>
+			</div>
+		</div>
+	</div>
+</p-dialog>

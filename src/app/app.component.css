@@ -1,0 +1,28 @@
+.contents {
+	display: flex;
+	height: 100vh;
+}
+
+label {
+	font-size: 0.75rem;
+}
+
+.col-6 {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.stop-type {
+	text-decoration: underline;
+	opacity: 0.75;
+}
+
+.stop-type:hover {
+	opacity: 1;
+	cursor: pointer;
+}
+
+.stop-type.active {
+	opacity: 1;
+	color: #5f99f7;
+}

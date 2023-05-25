@@ -1,0 +1,184 @@
+{
+	"data": [
+		{
+			"id": 0,
+			"company": "Almacén",
+			"street": "Poligono Industrial Trapaga-Ugarte, Carretera, BI-3746",
+			"postalCode": "48510",
+			"locality": "Valle de Trápaga-Trapagaran",
+			"province": "Vizcaya",
+			"latitude": 43.29999378879064,
+			"longitude": -3.0166534815507715
+		},
+		{
+			"id": 1,
+			"company": "San Jorge hotela",
+			"street": "Plaza de Antonio Alzaga, 51",
+			"postalCode": "48980",
+			"locality": "Santurce",
+			"province": "Vizcaya",
+			"latitude": 43.32264866661891,
+			"longitude": -3.0309646055149218
+		},
+		{
+			"id": 2,
+			"company": "Estación de Servicio Petronor - Repsol Mungia",
+			"street": "Bi-3121, 24, 2 D",
+			"postalCode": "48610",
+			"locality": "Mungia",
+			"province": "Vizcaya",
+			"latitude": 43.366701143717904,
+			"longitude": -2.9227744691202404
+		},
+		{
+			"id": 3,
+			"company": "Aloka Rooms Sopela",
+			"street": "Goiene Kalea, 6",
+			"postalCode": "48600",
+			"locality": "Sopela",
+			"province": "Vizcaya",
+			"latitude": 43.381809471897064,
+			"longitude": -2.985463511821506
+		},
+		{
+			"id": 4,
+			"company": "Asador Urizar Erretegia",
+			"street": "Carretera Alto Andraka-Armintza, 32",
+			"postalCode": "48620",
+			"locality": "Lemoiz",
+			"province": "Vizcaya",
+			"latitude": 43.403316543270044,
+			"longitude": -2.9080533729798224
+		},
+		{
+			"id": 5,
+			"company": "Casa Rural Errota-barri",
+			"street": "Bidea, Bajo (CASERIO ERROTABARRI, Zumetxaga Bidea), 6",
+			"postalCode": "48120",
+			"locality": "Mungia",
+			"province": "Vizcaya",
+			"latitude": 43.38161728682207,
+			"longitude": -2.8240382379346602
+		},
+		{
+			"id": 6,
+			"company": "EROSKI ABADIÑO",
+			"street": "Murueta",
+			"postalCode": "48220",
+			"locality": "Abadiño",
+			"province": "Vizcaya",
+			"latitude": 43.173241391563835,
+			"longitude": -2.6173965805483146
+		},
+		{
+			"id": 7,
+			"company": "Casa Cámara",
+			"street": "Donibane, 79",
+			"postalCode": "20110",
+			"locality": "Abadiño",
+			"province": "Guipúzcoa",
+			"latitude": 43.328094822121706,
+			"longitude": -1.9144679051145286
+		},
+		{
+			"id": 8,
+			"company": "Alcampo Oiartzun",
+			"street": "C.C. Mamut, Astigarrako Bidea, 4",
+			"postalCode": "20180",
+			"locality": "Oiartzun",
+			"province": "Guipúzcoa",
+			"latitude": 43.30227780138663,
+			"longitude": -1.882358398645203
+		},
+		{
+			"id": 9,
+			"company": "Fuerte De San Marcos",
+			"street": "33, San Marko Gunea Aldea",
+			"postalCode": "20100",
+			"locality": "Errenteria",
+			"province": "Guipúzcoa",
+			"latitude": 43.299368153782304,
+			"longitude": -1.9139681456509519
+		},
+		{
+			"id": 10,
+			"company": "Lidl Hernani",
+			"street": "Florida Auzoa, 23",
+			"postalCode": "20120",
+			"locality": "Hernani",
+			"province": "Guipúzcoa",
+			"latitude": 43.272483159354266,
+			"longitude": -1.9712733362274009
+		},
+		{
+			"id": 11,
+			"company": "Centro Comercial Urbil",
+			"street": "Bo. Txiki-Erdi, 7",
+			"postalCode": "20170",
+			"locality": "Usurbil",
+			"province": "Guipúzcoa",
+			"latitude": 43.27680460207754,
+			"longitude": -2.023851415492336
+		},
+		{
+			"id": 12,
+			"company": "Saizar Sagardotegia",
+			"street": "Kalezar Auzoa, 39",
+			"postalCode": "20170",
+			"locality": "Usurbil",
+			"province": "Guipúzcoa",
+			"latitude": 43.27662247139709,
+			"longitude": -2.0413627396966088
+		},
+		{
+			"id": 13,
+			"company": "Adarra Jatetxea",
+			"street": "Lugar Barrio Goiburu, 37",
+			"postalCode": "20130",
+			"locality": "Urnieta",
+			"province": "Guipúzcoa",
+			"latitude": 43.22834634110119,
+			"longitude": -1.9854892935783612
+		},
+		{
+			"id": 14,
+			"company": "Ama Jatetxea",
+			"street": "Martin Jose Iraola Hiribidea, 4",
+			"postalCode": "20400",
+			"locality": "Tolosa",
+			"province": "Guipúzcoa",
+			"latitude": 43.13300684009967,
+			"longitude": -2.077885323653407
+		},
+		{
+			"id": 15,
+			"company": "Kikara Gozotegia",
+			"street": "Larraitz Auz., 7",
+			"postalCode": "20260",
+			"locality": "Alegia",
+			"province": "Guipúzcoa",
+			"latitude": 43.09847211509311,
+			"longitude": -2.095937538834831
+		},
+		{
+			"id": 16,
+			"company": "CALERA DE ALZO S.L.",
+			"street": "Barrio Egileor, s/n",
+			"postalCode": "20268",
+			"locality": "Altzo",
+			"province": "Guipúzcoa",
+			"latitude": 43.08743997644743,
+			"longitude": -2.067335903089554
+		},
+		{
+			"id": 17,
+			"company": "Larraitz Gain Jatetxea",
+			"street": "Larraitz Auzoa, 3",
+			"postalCode": "20269",
+			"locality": "Abaltzisketa",
+			"province": "Guipúzcoa",
+			"latitude": 43.08743997644743,
+			"longitude": -2.067335903089554
+		}
+	]
+}
